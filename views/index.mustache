@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Stuff i need to do</h1>
+    <form class="" action="/todos" method="post">
+        <input type="text" name="description">
+        <button type="submit">Add</button>
+    </form>
+<ul>
+<!-- These are handlebars - probably belong to mustache - its a templating langauge -->
+<!-- basically takes the result from the db -json- writes it to the html  -->
+<!-- handlebars generate html -->
+    {{#todos}}
+
+    <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+        {{description}} - {{done}} <button type="submit">Done</button>
+        </form>
+    </li>
+    {{/todos}}
+</ul>
+
+<h3>Done</h3>
+<ul>
+    {{#doneTodos}}
+    <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+        {{description}} - {{done}} <button type="submit">Whoops!</button>
+        </form>
+    </li>
+    {{/doneTodos}}
+</ul>
+
+
+</body>
+</html>
